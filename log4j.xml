@@ -18,7 +18,6 @@
   <root>
     <priority value ="info"></priority>
     <appender-ref ref="console"></appender-ref>
-    <appender-ref ref="fileAppender"></appender-ref>
   </root>
  
 </log4j:configuration>

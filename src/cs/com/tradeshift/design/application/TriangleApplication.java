@@ -1,5 +1,6 @@
 package cs.com.tradeshift.design.application;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import org.apache.log4j.Logger;
@@ -11,8 +12,7 @@ import cs.com.tradeshift.design.model.Triangle;
 
 /**
  * 
- * @author Manju
- * Determines the type of Triangle
+ * @author Manju Determines the type of Triangle
  */
 public class TriangleApplication {
 
@@ -28,14 +28,14 @@ public class TriangleApplication {
 			side1 = scan.nextInt();
 			side2 = scan.nextInt();
 			side3 = scan.nextInt();
-			if (side1 <= 0 || side2 <= 0 || side3 <= 0)
-				System.out.println("It is "
-						+ TriangleTypeEnum.INVALID.toString() + " input");
-			else {
-				Triangle triangle = TriangleFactory.checkTriangle(side1, side2,
-						side3);
-				log.info("Type of Triangle is : " + triangle.getTriangle());
-			}
+			Triangle triangle = TriangleFactory.checkTriangle(side1, side2,
+					side3);
+			log.info("Type of Triangle is : " + triangle.getTriangle());
+
+		} catch (InputMismatchException e) {
+			log.error("It is " + TriangleTypeEnum.INVALID.toString()
+					+ " Input " + e);
+			log.error("Enter Integer type values");
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
